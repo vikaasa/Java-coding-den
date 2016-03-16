@@ -1,0 +1,67 @@
+	10
+   8          12
+7    9      11   13
+
+
+
+public void lvlzigzag(Node root, ArrayList<ArrayList<Integer>> arrlist, int level) {
+        if (root == null) {
+            return;
+        }
+        ArrayList<Integer> list = null;
+        if (level == arrlist.size()) {
+            list = new ArrayList<>();
+            arrlist.add(list);
+        } else {
+            list = arrlist.get(level);
+        }
+        list.add(root.getData());
+        lvlzigzag(root.getLeft(), arrlist, level + 1);
+        lvlzigzag(root.getRight(), arrlist, level + 1);
+    }
+    public void callvlzigzag() {
+        ArrayList<ArrayList<Integer>> lists = new ArrayList<ArrayList<Integer>>();
+        int lvl = 0;
+        lvlzigzag(root, lists, lvl);
+
+        int size=lists.size();
+        for(int i=0;i<size;i++){
+            if(i%2==1){
+                //System.out.println(lists);
+                //Collections.reverse(lists.get(i));
+                //System.out.println(lists);
+            }
+        }
+        System.out.println(lists);
+    }
+
+3 4 7 9 9
+2 4 5 6 8
+11111111111111111111111
+swap = 2 4 6 8
+2 4 6 8
+3 5 7
+
+public void callvlzigzag() {
+        ArrayList<ArrayList<Integer>> lists = new ArrayList<ArrayList<Integer>>();
+        int lvl = 0;
+        int d;
+        int c=0;
+        boolean flip=true;
+        int h=returnHeight()+1;
+        System.out.println(h);
+        for(lvl=1;lvl<=h;lvl++){
+            lvlzigzag(root, lists, lvl,flip,d=lvl,c);
+
+            flip=!flip;
+        }
+        System.out.println(lists);
+    }
+    public void predecessor(Node root){
+        if (root==null)
+            return;
+        root=root.getLeft();
+        while(root.getRight()!=null)
+            root=root.getRight();
+        System.out.print(root.getData());
+    }
