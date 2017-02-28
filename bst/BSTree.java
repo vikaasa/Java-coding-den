@@ -4,7 +4,7 @@ public class BSTree {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Bst tree = new Bst();
+		BST tree = new BST();
 		
 		tree.insert(10);
 		tree.insert(8);

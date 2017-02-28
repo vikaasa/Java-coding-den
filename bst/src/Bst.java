@@ -1,10 +1,9 @@
 /**
  * Created by Vikaasa on 2/22/2016.
  */
-import java.lang.reflect.Array;
 import java.util.*;
 
-public class Bst {
+public class BST {
 
     private Node root;
 
@@ -29,7 +28,6 @@ public class Bst {
         } else {
             pre.setRight(node);
         }
-
     }
 
     public Node insertRec(Node root, int data) {
@@ -41,9 +39,7 @@ public class Bst {
         } else {
             root.setRight(insertRec(root.getRight(), data));
         }
-
         return root;
-
     }
 
     public void recInsert(int data) {
@@ -242,7 +238,7 @@ public class Bst {
             return false;
         }
     }
-    public void callcompare(Bst tree2) {
+    public void callcompare(BST tree2) {
         boolean x= compare(root, tree2.root);
         System.out.println(x);
     }
@@ -265,6 +261,25 @@ public class Bst {
         int sum = 0;
         boolean x = pathsum(root, sum, psum);
         System.out.println(x);
+    }
+
+    public Node callLowestCommonAncestor(int p, int q){
+        return lowestCommonAncestor(root, p, q);
+    }
+    public Node lowestCommonAncestor(Node root, int p, int q){
+        Node node = root;
+        while(node != null){
+            if(node.getData()>p && node.getData()>q){
+                node.setLeft(node.getLeft());
+            }
+            else if(node.getData()<p && node.getData()<q){
+                node.setRight(node.getRight());
+            }
+            else{
+                return null;
+            }
+        }
+        return node;
     }
     public ArrayList<Integer> lvlzigzag(Node root, ArrayList<Integer> list, int level, boolean flip) {
         if (root == null) {
