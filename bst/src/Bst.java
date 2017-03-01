@@ -94,7 +94,7 @@ public class BST {
         st.append(str);
         st.append(root.getData());
 
-        System.out.print(root.getData() + " ");
+        //System.out.print(root.getData() + " ");
 
         if (root.getLeft() == null && root.getRight() == null) {
             pathlist.add(st);
@@ -138,31 +138,31 @@ public class BST {
         return true;
     }
 
-    public void callcheckbstinorder() {
+    public void callCheckBstInOrder() {
         //int prevtmp=Integer.MIN_VALUE;
-        if (checkbstinorder(root) == true)
+        if (checkBstInOrder(root) == true)
             System.out.println("it is a BST");
         else
             System.out.println("it is not a BST");
     }
 
-    public boolean checkbstinorder(Node root) {
+    public boolean checkBstInOrder(Node root) {
         if (root == null) {
             return true;
         }
-        checkbstinorder(root.getLeft());
+        checkBstInOrder(root.getLeft());
         if ((root.getLeft() != null) && (root.getData() <= root.getLeft().getData()))
             return false;
-        checkbstinorder(root.getRight());
+        checkBstInOrder(root.getRight());
         return true;
     }
 
-    public int checkheight(Node root, int level) {
+    public int checkHeight(Node root, int level) {
         if (root == null) return level;
 
-        int hleft = checkheight(root.getLeft(), level + 1);
+        int hleft = checkHeight(root.getLeft(), level + 1);
 
-        int hright = checkheight(root.getRight(), level + 1);
+        int hright = checkHeight(root.getRight(), level + 1);
 
         int diff = Math.abs(hleft - hright);
 
@@ -174,14 +174,14 @@ public class BST {
 
     public void checkHeight() {
         int level = -1;
-        int h = checkheight(root, level);
+        int h = checkHeight(root, level);
         if (h == -1)
             System.out.println("Not BST: Height:" + h);
         else System.out.println("BST: Height:" + h);
     }
     public int returnHeight(){
         int level=-1;
-        return checkheight(root,level);
+        return checkHeight(root, level);
     }
     public boolean search(Node root, int x) {
         if (root == null) {
@@ -202,11 +202,11 @@ public class BST {
         return false;
     }
 
-    public void callsearch(int ele) {
+    public void callSearch(int ele) {
         search(root, ele);
     }
 
-    public void levellinkedlist(Node root, ArrayList<LinkedList<Integer>> arrlist, int level) {
+    public void levelOrderTraversal(Node root, ArrayList<LinkedList<Integer>> arrlist, int level) {
         if (root == null) {
             return;
         }
@@ -218,14 +218,14 @@ public class BST {
             list = arrlist.get(level);
         }
         list.add(root.getData());
-        levellinkedlist(root.getLeft(), arrlist, level + 1);
-        levellinkedlist(root.getRight(), arrlist, level + 1);
+        levelOrderTraversal(root.getLeft(), arrlist, level + 1);
+        levelOrderTraversal(root.getRight(), arrlist, level + 1);
     }
 
-    public void calllevellinkedlist() {
+    public void callLevelOrderTraversal() {
         ArrayList<LinkedList<Integer>> lists = new ArrayList<LinkedList<Integer>>();
         int lvl = 0;
-        levellinkedlist(root, lists, lvl);
+        levelOrderTraversal(root, lists, lvl);
         System.out.println(lists);
     }
 
@@ -238,29 +238,38 @@ public class BST {
             return false;
         }
     }
-    public void callcompare(BST tree2) {
+    public void callCompare(BST tree2) {
         boolean x= compare(root, tree2.root);
         System.out.println(x);
     }
-    public boolean pathsum(Node root, int sum, int psum){
-        if(root==null)
-            return false;
+    public List<List<Integer>> callPathSum(int sum)
+    {
+        List<List<Integer>> result  = new LinkedList<List<Integer>>();
+        List<Integer> currentResult  = new LinkedList<Integer>();
+        pathSum(root, sum, currentResult, result);
+        System.out.println(result);
+        return result;
+    }
 
-        sum = sum+root.getData();
-
-        if(root.getLeft()==null&&root.getRight()==null) {
-            if (sum == psum)
-                return true;
+    public void pathSum(Node root, int sum, List<Integer> currentResult, List<List<Integer>> result)
+    {
+        currentResult.add(root.getData());
+        if (root == null)
+            return;
+        if (sum == root.getData())
+        {
+            result.add(new ArrayList(currentResult));
+            currentResult.remove(currentResult.size() - 1);
+            return;
         }
         else
-            return pathsum(root.getLeft(),sum,psum)||pathsum(root.getRight(),sum,psum);
-
-        return false;
-    }
-    public void callpathsum(int psum) {
-        int sum = 0;
-        boolean x = pathsum(root, sum, psum);
-        System.out.println(x);
+        {
+            if(root.getLeft()!=null)
+                pathSum(root.getLeft(), sum - root.getData(), currentResult, result);
+            if(root.getRight()!=null)
+                pathSum(root.getRight(), sum - root.getData(), currentResult, result);
+        }
+        currentResult.remove(currentResult.size() - 1);
     }
 
     public Node callLowestCommonAncestor(int p, int q){
@@ -270,18 +279,18 @@ public class BST {
         Node node = root;
         while(node != null){
             if(node.getData()>p && node.getData()>q){
-                node.setLeft(node.getLeft());
+                node = node.getLeft();
             }
             else if(node.getData()<p && node.getData()<q){
-                node.setRight(node.getRight());
+                node = node.getRight();
             }
             else{
-                return null;
+                return node;
             }
         }
-        return node;
+        return null;
     }
-    public ArrayList<Integer> lvlzigzag(Node root, ArrayList<Integer> list, int level, boolean flip) {
+    public ArrayList<Integer> lvlZigZag(Node root, ArrayList<Integer> list, int level, boolean flip) {
         if (root == null) {
             return null;
         }
@@ -292,16 +301,16 @@ public class BST {
         }
         else {
             if (flip == true) {
-                lvlzigzag(root.getLeft(), list, level - 1, flip);
-                lvlzigzag(root.getRight(), list, level - 1, flip);
+                lvlZigZag(root.getLeft(), list, level - 1, flip);
+                lvlZigZag(root.getRight(), list, level - 1, flip);
             } else {
-                lvlzigzag(root.getRight(), list, level - 1, flip);
-                lvlzigzag(root.getLeft(), list, level - 1, flip);
+                lvlZigZag(root.getRight(), list, level - 1, flip);
+                lvlZigZag(root.getLeft(), list, level - 1, flip);
             }
         }
         return list;
     }
-    public void callvlzigzag() {
+    public void callLvlZigZag() {
         ArrayList<ArrayList<Integer>> arrlist = new ArrayList<ArrayList<Integer>>();
         int lvl = 0;
         int d;
@@ -311,24 +320,14 @@ public class BST {
         System.out.println(h);
         for(lvl=1;lvl<=h;lvl++){
             ArrayList<Integer> list=new ArrayList<Integer>();
-            list = lvlzigzag(root, list, lvl,flip);
-            //arrlist.get(lvl-1)=lvlzigzag(root, list, lvl,flip,d=lvl,c);
+            list = lvlZigZag(root, list, lvl, flip);
+            //arrlist.get(lvl-1)=lvlZigZag(root, list, lvl,flip,d=lvl,c);
             arrlist.add(lvl-1, list);
 
             flip=!flip;
         }
         System.out.println(arrlist);
     }
-    public void predecessor(Node root){
-        if (root==null)
-            return;
-        root=root.getLeft();
-        while(root.getRight()!=null)
-            root=root.getRight();
-        System.out.print(root.getData());
-    }
-    public void callpredecessor(){
-        predecessor(root);
-    }
+
 
 }

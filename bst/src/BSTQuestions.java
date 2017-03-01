@@ -15,13 +15,14 @@ public class BSTQuestions {
         tree.insert(9);
         tree.insert(11);
         tree.insert(13);
+        tree.callLevelOrderTraversal();
         Node lcs = tree.callLowestCommonAncestor(7,9);
         System.out.println(lcs.getData());
         BST tree2=new BST();
         tree2.insert(5);
         tree2.insert(7);
         tree2.insert(3);
-        tree2.calllevellinkedlist();
+        tree2.callLevelOrderTraversal();
     //  tree.recInsert(10);
       // tree.recInsert(8);
         //tree.recInsert(9);
@@ -33,12 +34,13 @@ public class BSTQuestions {
         tree.checkHeight();
         //tree.allpaths();
         //tree.callcheckbst();
-        //tree.callcheckbstinorder();
-        //tree.callsearch(7);
-        tree.calllevellinkedlist();
-        //tree.callcompare(tree2);
-        //tree.callpathsum(25);
-        //tree.callvlzigzag();
+        //tree.callCheckBstInOrder();
+        //tree.callSearch(7);
+        tree.callLevelOrderTraversal();
+        //tree.callCompare(tree2);
+        tree.callPathSum(25);
+        tree.allpaths();
+        //tree.callLvlZigZag();
         //tree.callpredecessor();
     }
 
