@@ -23,7 +23,7 @@ public class BSTree {
 		tree.traversal("postOrder");
 //		System.out.println();
 		
-		//tree.allpaths();	
+		//tree.allPaths();
 		
 	}
 
