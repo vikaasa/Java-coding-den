@@ -1,0 +1,5 @@
+package parkinglot;
+
+abstract public class ParkingLevel {
+
+}

@@ -1,0 +1,49 @@
+package parkinglot;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class ParkingLot {
+	public static enum VehicleType {CAR, BIKE, MINIVAN, VAN, BUS, TRUCK};
+	public static final Map<VehicleType, Integer> VehicleSizes = initVehicleSizes();
+    private final static Map<VehicleType, Integer> initVehicleSizes() {
+        Map<VehicleType,Integer> vehicleSizeMap = new HashMap<VehicleType, Integer>();
+        vehicleSizeMap.put(VehicleType.CAR, 1);
+        vehicleSizeMap.put(VehicleType.BIKE, 1);
+        return Collections.unmodifiableMap(vehicleSizeMap);
+    }
+	private static final int NO_OF_GENERAL_PARKING_SPOTS_NOT_HANDICAPPED = 10;
+	private static final int NO_OF_GENERAL_PARKING_SPOTS_HANDICAPPED = 10;
+	private static final int NO_OF_BIKE_PARKING_SPOTS = 20;
+	private static final int TOTAL_PARKING_SPOTS = NO_OF_GENERAL_PARKING_SPOTS_NOT_HANDICAPPED + NO_OF_GENERAL_PARKING_SPOTS_HANDICAPPED + NO_OF_BIKE_PARKING_SPOTS;
+	private HashMap<Integer,Boolean> occupiedMap;
+	private HashMap<String, Integer> licensePlateMap;
+	private List<GeneralParkingSpot> generalParkingSpotsNotHandicapped;
+	private List<GeneralParkingSpot> generalParkingSpotsHandicapped;
+	private List<BikeParkingSpot> bikeParkingSpots;
+	
+	public ParkingLot() {
+		// TODO Auto-generated constructor stub
+		generalParkingSpotsNotHandicapped = new ArrayList<>(NO_OF_GENERAL_PARKING_SPOTS_NOT_HANDICAPPED);
+		generalParkingSpotsHandicapped = new ArrayList<>(NO_OF_GENERAL_PARKING_SPOTS_HANDICAPPED);
+		bikeParkingSpots = new ArrayList<>(NO_OF_BIKE_PARKING_SPOTS);
+		occupiedMap = new HashMap<>();
+		licensePlateMap = new HashMap<>();
+		createParkingSpots();
+	}
+	public void createParkingSpotsHelper(int parkingSpotCounter, int parkingSpotsForType, VehicleType vehicleType){
+		for(int i = 0; i<parkingSpotsForType;i++){
+			
+		}
+			
+	}
+	public void createParkingSpots(){
+		
+		
+	}
+	
+	
+}
+

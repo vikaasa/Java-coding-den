@@ -1,0 +1,14 @@
+1489711253373	Delete element
+1489716629641	Delete element
+1489765325462	Encapsulate field 'isHandicapped'
+1489862400645	Delete element
+1489867786111	Move compilation units
+1489870673655	Encapsulate field 'size'
+1489871463656	Encapsulate field 'isHandicapped'
+1489876279906	Encapsulate field 'totalParkingSpotsForLevel'
+1489876442405	Encapsulate field 'levelName'
+1489876623292	Encapsulate field 'numberOfHandicappedParking'
+1489876629159	Encapsulate field 'numberOfGeneralParking'
+1489876633194	Encapsulate field 'numberOfBikeParking'
+1489948022004	Encapsulate field 'rows'
+1489955556538	Encapsulate field 'levelCounterStart'

@@ -1,0 +1,13 @@
+
+public abstract class Vehicle {
+	private String licensePlate;
+	private boolean isHandicapped;
+	
+	public Vehicle(String licensePlate){
+		this.licensePlate = licensePlate;
+		this.isHandicapped = false;
+	}
+	public String getLicensePlate(){
+		return licensePlate;
+	}
+}

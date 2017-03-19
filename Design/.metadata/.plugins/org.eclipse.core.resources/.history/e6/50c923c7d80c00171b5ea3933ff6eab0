@@ -1,0 +1,61 @@
+package parkinglot;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import parkinglot.InitSettings.VehicleType;
+
+public class ParkingBay extends ParkingLevel {
+	private int numberOfGeneralParking;
+	private int numberOfHandicappedParking;
+	private int numberOfBikeParking;
+	private List<GeneralParkingSpot> generalParkingSpotsNotHandicapped;
+	private List<GeneralParkingSpot> generalParkingSpotsHandicapped;
+	private List<BikeParkingSpot> bikeParkingSpots;
+	private HashMap<Integer, Boolean> occupiedMap;
+	private HashMap<String, Integer> licensePlateMap;
+	public ParkingBay(char levelName) {
+		super(levelName);
+		// TODO Auto-generated constructor stub
+		numberOfGeneralParking = (int) (totalParkingSpotsForLevel*InitSettings.parkingTypeRatios.get(InitSettings.GeneralParkingTypes.NON_HANDICAPPED));
+		numberOfHandicappedParking = (int) (totalParkingSpotsForLevel*InitSettings.parkingTypeRatios.get(InitSettings.GeneralParkingTypes.HANDICAPPED));
+		numberOfBikeParking = (int) (totalParkingSpotsForLevel*InitSettings.parkingTypeRatios.get(InitSettings.GeneralParkingTypes.BIKE));
+		generalParkingSpotsNotHandicapped = new ArrayList<>();
+		generalParkingSpotsHandicapped = new ArrayList<>();
+		bikeParkingSpots = new ArrayList<>();
+		occupiedMap = new HashMap<>();
+		licensePlateMap = new HashMap<>();
+		createParkingSpots();
+	}
+	public int getNumberOfHandicappedParking() {
+		return numberOfHandicappedParking;
+	}
+	public void setNumberOfHandicappedParking(int numberOfHandicappedParking) {
+		this.numberOfHandicappedParking = numberOfHandicappedParking;
+	}
+	public int getNumberOfGeneralParking() {
+		return numberOfGeneralParking;
+	}
+	public void setNumberOfGeneralParking(int numberOfGeneralParking) {
+		this.numberOfGeneralParking = numberOfGeneralParking;
+	}
+	public int getNumberOfBikeParking() {
+		return numberOfBikeParking;
+	}
+	public void setNumberOfBikeParking(int numberOfBikeParking) {
+		this.numberOfBikeParking = numberOfBikeParking;
+	}
+	
+	public void createParkingSpotsHelper(int parkingSpotCounter, int parkingSpotsForType, VehicleType vehicleType){
+		for(int i = 0; i<parkingSpotsForType;i++){
+			
+		}
+			
+	}
+	public void createParkingSpots(){
+		
+		
+	}
+
+}

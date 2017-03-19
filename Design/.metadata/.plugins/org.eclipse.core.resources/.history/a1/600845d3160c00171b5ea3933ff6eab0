@@ -1,0 +1,17 @@
+import java.util.HashMap;
+import java.util.List;
+
+
+public class ParkingLot {
+
+	public ParkingLot() {
+		// TODO Auto-generated constructor stub
+	}
+	private static final int NO_OF_CAR_SLOTS = 10;
+	private static final int NO_OF_BIKE_SLOTS = 20;
+	public HashMap<Integer,Boolean> occupiedMap = new HashMap<>();
+	public HashMap<String, Integer> licensePlateMap = new HashMap<>();
+	private List<CarParkingSpot> carSlots;
+	private List<BikeParkingSpot> bikeSlots;
+	
+}

@@ -1,0 +1,16 @@
+package parkinglot;
+
+public class GeneralParkingSpot extends ParkingSpot{
+	private boolean isHandicapped;
+	public GeneralParkingSpot(int slotNumber, String licensePlate, int spotSize, boolean isHandicapped) {
+		super(slotNumber, licensePlate, spotSize);
+		// TODO Auto-generated constructor stub
+		this.setHandicapped(isHandicapped);
+	}
+	public boolean isHandicapped() {
+		return isHandicapped;
+	}
+	public void setHandicapped(boolean isHandicapped) {
+		this.isHandicapped = isHandicapped;
+	}	
+}

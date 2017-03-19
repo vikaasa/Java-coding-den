@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public 
+public class ParkingLot {
+
+	private static final int NO_OF_CAR_PARKING_SPOTS_NOT_HANDICAPPED = 10;
+	private static final int NO_OF_CAR_PARKING_SPOTS_HANDICAPPED = 10;
+	private static final int NO_OF_BIKE_PARKING_SPOTS = 20;
+	private HashMap<Integer,Boolean> occupiedMap;
+	private HashMap<String, Integer> licensePlateMap;
+	private List<CarParkingSpot> carParkingSpotsNotHandicapped;
+	private List<CarParkingSpot> carParkingSpotsHandicapped;
+	private List<BikeParkingSpot> bikeParkingSpots;
+	
+	public ParkingLot() {
+		// TODO Auto-generated constructor stub
+		carParkingSpotsNotHandicapped = new ArrayList<>(NO_OF_CAR_PARKING_SPOTS_NOT_HANDICAPPED);
+		carParkingSpotsHandicapped = new ArrayList<>(NO_OF_CAR_PARKING_SPOTS_HANDICAPPED);
+		bikeParkingSpots = new ArrayList<>(NO_OF_BIKE_PARKING_SPOTS);
+		occupiedMap = new HashMap<>();
+		licensePlateMap = new HashMap<>();
+		createParkingSpots();
+	}
+	public void createParkingSpots(){
+		
+	}
+	
+	
+}

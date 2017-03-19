@@ -1,0 +1,11 @@
+
+public class CarParkingSpot extends ParkingSpot{
+	static int carParkingFees = 4;
+	public CarParkingSpot(int slotNumber, String licensePlate, long entryTimestamp, long exitTimestamp) {
+		super(slotNumber, licensePlate, entryTimestamp, exitTimestamp, carParkingFees);
+		// TODO Auto-generated constructor stub
+	}
+	//CarParkingSpot c1 = new CarParkingSpot(253, "G21", 1, 2);
+	new CarParkingSpot(253, "G21", 1, 2).getLicensePlate();
+	
+}

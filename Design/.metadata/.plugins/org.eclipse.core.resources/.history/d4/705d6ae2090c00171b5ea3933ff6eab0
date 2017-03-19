@@ -1,0 +1,10 @@
+
+public class ParkingLot {
+
+	public ParkingLot() {
+		// TODO Auto-generated constructor stub
+	}
+	public static final int NO_OF_CAR_SLOTS = 10;
+	public static final int NO_OF_BIKE_SLOTS = 20;
+	public HashMap<Integer,>
+}

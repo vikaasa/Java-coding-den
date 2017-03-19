@@ -1,0 +1,11 @@
+
+public class CarParkingSpot extends ParkingSpot{
+	private static int carParkingFees = 4;
+	private boolean isHandicapped;
+	public CarParkingSpot(int slotNumber, String licensePlate, long entryTimestamp, long exitTimestamp, boolean isHandicapped) {
+		super(slotNumber, licensePlate, entryTimestamp, exitTimestamp, carParkingFees);
+		// TODO Auto-generated constructor stub
+		this.isHandicapped = isHandicapped;
+	}
+	
+}

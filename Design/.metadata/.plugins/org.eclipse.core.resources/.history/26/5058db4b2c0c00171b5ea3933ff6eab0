@@ -1,0 +1,10 @@
+package parkinglot;
+
+public class ParkingBay extends ParkingLevel {
+
+	public ParkingBay(int totalParkingSpotsForLevel, char levelName) {
+		super(totalParkingSpotsForLevel, levelName);
+		// TODO Auto-generated constructor stub
+	}
+
+}

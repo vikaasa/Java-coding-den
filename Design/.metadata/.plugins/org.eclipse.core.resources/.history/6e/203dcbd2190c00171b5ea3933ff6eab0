@@ -1,0 +1,12 @@
+package parkinglot;
+
+public class GeneralParkingSpot extends ParkingSpot{
+	private static int genericParkingFees = 4;
+	private boolean isHandicapped;
+	public GeneralParkingSpot(int slotNumber, String licensePlate, int spotSize, boolean isHandicapped) {
+		super(slotNumber, licensePlate, spotSize);
+		// TODO Auto-generated constructor stub
+		this.isHandicapped = isHandicapped;
+	}
+	
+}

@@ -1,0 +1,17 @@
+
+public class Car extends Vehicle {
+	private boolean isHandicapped;
+	
+	public Car(String licensePlate, boolean isHandicapped) {
+		super(licensePlate);
+		// TODO Auto-generated constructor stub
+		this.setHandicapped(isHandicapped);
+	}
+	public boolean getIsHandicapped() {
+		return isHandicapped;
+	}
+	public void setHandicapped(boolean isHandicapped) {
+		this.isHandicapped = isHandicapped;
+	}
+	
+}

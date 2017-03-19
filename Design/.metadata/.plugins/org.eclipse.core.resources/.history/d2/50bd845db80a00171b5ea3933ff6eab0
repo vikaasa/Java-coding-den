@@ -1,0 +1,15 @@
+
+public class CarParkingSpot extends ParkingSpot{
+
+	public CarParkingSpot(int slotNumber, String licensePlate, long entryTimestamp, long exitTimestamp) {
+		super(slotNumber, licensePlate, entryTimestamp, exitTimestamp);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void defineParkingFees(int parkingFees) {
+		// TODO Auto-generated method stub
+		super.setParkingFees(parkingFees);
+	}
+
+}

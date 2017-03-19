@@ -1,0 +1,6 @@
+package parkinglot;
+
+abstract public class ParkingLevel {
+	private static int totalParkingSpotsForLevel;
+	
+}

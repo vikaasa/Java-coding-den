@@ -1,0 +1,30 @@
+package parkinglot;
+
+abstract public class ParkingLevel {
+	private int totalParkingSpotsForLevel;
+	private int rows;
+	private char levelName;
+	public ParkingLevel(int totalParkingSpotsForLevel, int rows, char levelName){
+		this.setTotalParkingSpotsForLevel(totalParkingSpotsForLevel);
+		this.setLevelName(levelName);
+		this.setRows(rows);
+	}
+	public int getTotalParkingSpotsForLevel() {
+		return totalParkingSpotsForLevel;
+	}
+	public void setTotalParkingSpotsForLevel(int totalParkingSpotsForLevel) {
+		this.totalParkingSpotsForLevel = totalParkingSpotsForLevel;
+	}
+	public char getLevelName() {
+		return levelName;
+	}
+	public void setLevelName(char levelName) {
+		this.levelName = levelName;
+	}
+	public int getRows() {
+		return rows;
+	}
+	public void setRows(int rows) {
+		this.rows = rows;
+	}
+}

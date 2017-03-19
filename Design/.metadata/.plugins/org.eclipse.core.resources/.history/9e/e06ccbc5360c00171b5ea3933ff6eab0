@@ -1,0 +1,33 @@
+package parkinglot;
+
+public class ParkingBay extends ParkingLevel {
+	private int numberOfGeneralParking;
+	private int numberOfHandicappedParking;
+	private int numberOfBikeParking;
+	public ParkingBay(int totalParkingSpotsForLevel, char levelName) {
+		super(totalParkingSpotsForLevel, levelName);
+		// TODO Auto-generated constructor stub
+		numberOfGeneralParking = (int) (totalParkingSpotsForLevel*InitSettings.parkingTypeRatios.get(InitSettings.GeneralParkingTypes.NON_HANDICAPPED));
+		numberOfHandicappedParking = (int) (totalParkingSpotsForLevel*InitSettings.parkingTypeRatios.get(InitSettings.GeneralParkingTypes.HANDICAPPED));
+		numberOfBikeParking = (int) (totalParkingSpotsForLevel*InitSettings.parkingTypeRatios.get(InitSettings.GeneralParkingTypes.BIKE));
+	}
+	public int getNumberOfHandicappedParking() {
+		return numberOfHandicappedParking;
+	}
+	public void setNumberOfHandicappedParking(int numberOfHandicappedParking) {
+		this.numberOfHandicappedParking = numberOfHandicappedParking;
+	}
+	public int getNumberOfGeneralParking() {
+		return numberOfGeneralParking;
+	}
+	public void setNumberOfGeneralParking(int numberOfGeneralParking) {
+		this.numberOfGeneralParking = numberOfGeneralParking;
+	}
+	public int getNumberOfBikeParking() {
+		return numberOfBikeParking;
+	}
+	public void setNumberOfBikeParking(int numberOfBikeParking) {
+		this.numberOfBikeParking = numberOfBikeParking;
+	}
+
+}

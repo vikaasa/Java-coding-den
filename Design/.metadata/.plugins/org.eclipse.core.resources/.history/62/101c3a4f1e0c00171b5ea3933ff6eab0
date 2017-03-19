@@ -1,0 +1,18 @@
+package parkinglot;
+
+public class Car extends Vehicle {
+	private boolean isHandicapped;
+	private int size = ParkingLot.VehicleSizes.get(ParkingLot.VehicleType.CAR);
+	public Car(String licensePlate, boolean isHandicapped) {
+		super(licensePlate, size);
+		// TODO Auto-generated constructor stub
+		this.setHandicapped(isHandicapped);
+	}
+	public boolean getIsHandicapped() {
+		return isHandicapped;
+	}
+	public void setHandicapped(boolean isHandicapped) {
+		this.isHandicapped = isHandicapped;
+	}
+	
+}

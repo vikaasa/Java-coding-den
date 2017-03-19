@@ -1,0 +1,41 @@
+package parkinglot;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class ParkingLot {
+	 
+    
+    private ParkingLevel[] levels;
+	
+	private HashMap<Integer, Boolean> occupiedMap;
+	private HashMap<String, Integer> licensePlateMap;
+	private List<GeneralParkingSpot> generalParkingSpotsNotHandicapped;
+	private List<GeneralParkingSpot> generalParkingSpotsHandicapped;
+	private List<BikeParkingSpot> bikeParkingSpots;
+	
+	public ParkingLot() {
+		// TODO Auto-generated constructor stub
+		generalParkingSpotsNotHandicapped = new ArrayList<>();
+		generalParkingSpotsHandicapped = new ArrayList<>();
+		bikeParkingSpots = new ArrayList<>();
+		occupiedMap = new HashMap<>();
+		licensePlateMap = new HashMap<>();
+		createParkingSpots();
+	}
+	public void createParkingSpotsHelper(int parkingSpotCounter, int parkingSpotsForType, VehicleType vehicleType){
+		for(int i = 0; i<parkingSpotsForType;i++){
+			
+		}
+			
+	}
+	public void createParkingSpots(){
+		
+		
+	}
+	
+	
+}
+

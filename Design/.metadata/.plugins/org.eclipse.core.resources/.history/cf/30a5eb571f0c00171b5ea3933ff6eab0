@@ -1,0 +1,7 @@
+package parkinglot;
+
+public class BikeParkingSpot extends ParkingSpot{
+	public BikeParkingSpot(int slotNumber, String licensePlate, int spotSize) {
+		super(slotNumber, licensePlate, spotSize);
+		// TODO Auto-generated constructor stub
+}

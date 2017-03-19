@@ -1,0 +1,55 @@
+public abstract class ParkingSpot {
+	private boolean isOccupied;
+	private long slotNumber;
+	private String licensePlate;
+	private long entryTimestamp;
+	private long exitTimestamp;
+	private int parkingFees;
+	
+	public ParkingSpot(int slotNumber, String licensePlate, long entryTimestamp, long exitTimestamp, int parkingFees){
+		this.isOccupied = false;
+		this.slotNumber = slotNumber;
+		this.licensePlate = licensePlate;
+		this.entryTimestamp = entryTimestamp;
+		this.exitTimestamp = exitTimestamp;
+		this.parkingFees = parkingFees;
+	}
+	public boolean isOccupied(){
+		return isOccupied;
+	}
+	public long getSlotNumber(){
+		return slotNumber;
+	}
+	public long getEntryTimestamp(){
+		return entryTimestamp;
+	}
+	public String getLicensePlate(){
+		return licensePlate;
+	}
+	public long exitTimestamp(){
+		return exitTimestamp;
+	}
+	public long getParkingFees(){
+		return parkingFees;
+	}
+	public void setEntryTimestamp(long entryTimestamp){
+		this.entryTimestamp = entryTimestamp;
+	}
+	public void setExitTimestamp(long exitTimestamp){
+		this.exitTimestamp = exitTimestamp;
+	}
+	public void park(){
+		this.isOccupied = true;
+	}
+	public void unPark(){
+		this.isOccupied = false;
+	}
+	public void setLicensePlate(String licensePlate){
+		this.licensePlate = licensePlate;
+	}	
+	public void setParkingFees(int parkingFees){
+		this.parkingFees = parkingFees;
+	}	
+	//public abstract void defineParkingFees(int parkingFees);
+}
+

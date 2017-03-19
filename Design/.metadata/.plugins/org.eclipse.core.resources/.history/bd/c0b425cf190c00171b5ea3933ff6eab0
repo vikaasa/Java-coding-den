@@ -1,0 +1,10 @@
+package parkinglot;
+
+public class BikeParkingSpot extends ParkingSpot{
+	static int bikeParkingFees = 2;
+	public BikeParkingSpot(int slotNumber, String licensePlate, long entryTimestamp, long exitTimestamp) {
+		super(slotNumber, licensePlate);
+		// TODO Auto-generated constructor stub
+	}
+
+}
