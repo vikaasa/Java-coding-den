@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;parkinglot.ParkingLevel.isLevelAvailability()&apos; to &apos;getLevelAvailability&apos;&#x0D;&#x0A;- Original project: &apos;ParkingLot&apos;&#x0D;&#x0A;- Original element: &apos;parkinglot.ParkingLevel.isLevelAvailability()&apos;&#x0D;&#x0A;- Renamed element: &apos;parkinglot.ParkingLevel.getLevelAvailability()&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;isLevelAvailability&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;parkinglot{ParkingLevel.java[ParkingLevel~isLevelAvailability" name="getLevelAvailability" references="true" stamp="1489971562925" version="1.0"/>
+</session>

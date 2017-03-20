@@ -1,0 +1,82 @@
+package parkinglot;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+
+import parkinglot.InitSettings.ParkingType;
+import parkinglot.InitSettings.VehicleType;
+
+public class ParkingLot {
+	private ParkingLevel[] parkingLevels;
+	private int overallParkingSpotCounter;
+	private HashMap<String, Integer> licensePlateMap;
+	private PriorityQueue<Vehicle> incomingVehicles; 
+	public ParkingLot() {
+		// TODO Auto-generated constructor stub
+		overallParkingSpotCounter = 0;
+		parkingLevels = new ParkingLevel[InitSettings.TOTAL_NUMBER_OF_PARKING_LEVELS];
+		licensePlateMap = new HashMap<>();
+		incomingVehicles = new PriorityQueue<Vehicle>();
+		createLevels();
+	}
+	
+	public ParkingLevel[] getParkingLevels() {
+		return parkingLevels;
+	}
+
+	public void setParkingLevels(ParkingLevel[] parkingLevels) {
+		this.parkingLevels = parkingLevels;
+	}
+	
+	public void createLevels(){
+		for(int i = 0; i<InitSettings.NUMBER_OF_HEAVY_VEHICLE_BAYS; i++){
+			parkingLevels[i] = new HeavyVehicleBay((char)(i + 'A'), overallParkingSpotCounter);
+		}
+		for(int i = 0; i<InitSettings.NUMBER_OF_PARKING_BAYS; i++){
+			parkingLevels[i] = new ParkingBay((char)(i + 'A'), overallParkingSpotCounter);
+		}
+	}
+	public void findFirstEmptySpot(ParkingType parkingType){
+		for(int i=0;i<parkingLevels.length;i++){
+			if(parkingType == ParkingType.HANDICAPPED || parkingType == ParkingType.NON_HANDICAPPED || parkingType==ParkingType.BIKE){
+				// SKIP THE HEAVY VEHICLE BAYS
+				if(!(parkingLevels[i] instanceof HeavyVehicleBay) && parkingLevels[i].isLevelAvailability()){
+					for(int j = 0; j < parkingLevels[i].getRowAvailability().size(); j++){
+						if(parkingLevels[i].getRowAvailability().get(j).get(0)){
+							
+						}
+					}
+				}
+
+			}
+		}
+		
+	}
+	public void parkVehicle(Vehicle vehicle){
+		if(vehicle.getVehicleType() == VehicleType.CAR || vehicle.getVehicleType() == VehicleType.BIKE){
+			parkInParkingBay(vehicle);
+		}
+		else{
+			parkInHeavyVehicleBay(vehicle);
+		}
+	}
+
+	private void parkInHeavyVehicleBay(Vehicle vehicle) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void parkInParkingBay(Vehicle vehicle) {
+		// TODO Auto-generated method stub
+		if(vehicle instanceof Car){
+			if(((Car) vehicle).getIsHandicapped()==true){
+				
+			}
+		}
+	}
+	
+}
+

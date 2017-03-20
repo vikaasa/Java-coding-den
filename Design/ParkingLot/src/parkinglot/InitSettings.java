@@ -5,11 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InitSettings {
+	static final int NUMBER_OF_HEAVY_VEHICLE_BAYS = 0;
+	static final int NUMBER_OF_PARKING_BAYS = 3;
+	static final int TOTAL_NUMBER_OF_PARKING_LEVELS = NUMBER_OF_HEAVY_VEHICLE_BAYS + NUMBER_OF_PARKING_BAYS;
 	static final int TOTAL_PARKING_SPOTS_FOR_LEVEL = 200;
 	static final int ROWS_FOR_LEVEL = 10;
-
+	
 	public static enum VehicleType {CAR, BIKE, MINIVAN, VAN, BUS, TRUCK};
-	public static enum GeneralParkingTypes {HANDICAPPED, NON_HANDICAPPED, BIKE};
+	public static enum ParkingType {HANDICAPPED, NON_HANDICAPPED, BIKE};
 	public static final Map<VehicleType, Integer> VehicleSizes = initVehicleSizes();
     private final static Map<VehicleType, Integer> initVehicleSizes() {
         Map<VehicleType,Integer> vehicleSizeMap = new HashMap<VehicleType, Integer>();
@@ -17,12 +20,12 @@ public class InitSettings {
         vehicleSizeMap.put(VehicleType.BIKE, 1);
         return Collections.unmodifiableMap(vehicleSizeMap);
     }
-    public static final Map<GeneralParkingTypes, Double> parkingTypeRatios = initParkingTypeRatios();
-    private final static Map<GeneralParkingTypes, Double> initParkingTypeRatios() {
-        Map<GeneralParkingTypes,Double> parkingTypeRatiosMap = new HashMap<GeneralParkingTypes, Double>();
-        parkingTypeRatiosMap.put(GeneralParkingTypes.HANDICAPPED, 0.1);
-        parkingTypeRatiosMap.put(GeneralParkingTypes.NON_HANDICAPPED, 0.6);
-        parkingTypeRatiosMap.put(GeneralParkingTypes.BIKE, 0.3);
+    public static final Map<ParkingType, Double> parkingTypeRatios = initParkingTypeRatios();
+    private final static Map<ParkingType, Double> initParkingTypeRatios() {
+        Map<ParkingType,Double> parkingTypeRatiosMap = new HashMap<ParkingType, Double>();
+        parkingTypeRatiosMap.put(ParkingType.HANDICAPPED, 0.1);
+        parkingTypeRatiosMap.put(ParkingType.NON_HANDICAPPED, 0.6);
+        parkingTypeRatiosMap.put(ParkingType.BIKE, 0.3);
         return Collections.unmodifiableMap(parkingTypeRatiosMap);
     }
 }

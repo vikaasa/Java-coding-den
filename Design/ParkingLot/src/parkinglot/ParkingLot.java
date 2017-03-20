@@ -4,20 +4,148 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 
+import parkinglot.InitSettings.ParkingType;
 import parkinglot.InitSettings.VehicleType;
 
 public class ParkingLot {
-	 
-    
-    private ParkingLevel[] levels;
-	
+	private ParkingLevel[] parkingLevels;
+	private int overallParkingSpotCounter;
+	private HashMap<String, Integer> licensePlateMap;
+	private PriorityQueue<Vehicle> incomingVehicles; 
 	public ParkingLot() {
 		// TODO Auto-generated constructor stub
-
+		overallParkingSpotCounter = 0;
+		parkingLevels = new ParkingLevel[InitSettings.TOTAL_NUMBER_OF_PARKING_LEVELS];
+		licensePlateMap = new HashMap<>();
+		incomingVehicles = new PriorityQueue<Vehicle>();
+		createLevels();
 	}
 	
+	public ParkingLevel[] getParkingLevels() {
+		return parkingLevels;
+	}
+
+	public void setParkingLevels(ParkingLevel[] parkingLevels) {
+		this.parkingLevels = parkingLevels;
+	}
 	
+	public void createLevels(){
+		for(int i = 0; i<InitSettings.NUMBER_OF_HEAVY_VEHICLE_BAYS; i++){
+			parkingLevels[i] = new HeavyVehicleBay((char)(i + 'A'), overallParkingSpotCounter);
+		}
+		for(int i = 0; i<InitSettings.NUMBER_OF_PARKING_BAYS; i++){
+			parkingLevels[i] = new ParkingBay((char)(i + 'A'), overallParkingSpotCounter);
+		}
+	}
+	
+	public void checkRow(ParkingType parkingType, int level, int row){
+		Boolean rowStatus = Boolean.FALSE;
+		switch(parkingType){
+		case HANDICAPPED:
+			for(int spot = 0; spot < parkingLevels[level].rowsInLevel.get(row).size();spot++){
+				if(parkingLevels[level].rowsInLevel.get(row).get(spot) instanceof GeneralParkingSpot && ((GeneralParkingSpot) parkingLevels[level].rowsInLevel.get(row).get(spot)).isHandicapped() == true && parkingLevels[level].rowsInLevel.get(row).get(spot).isOccupied()==false){
+					rowStatus = Boolean.TRUE;
+				}
+			}
+			parkingLevels[level].getRowAvailability().get(row).set(0,rowStatus);
+			break;
+			
+		case NON_HANDICAPPED:
+			for(int spot = 0; spot < parkingLevels[level].rowsInLevel.get(row).size();spot++){
+				if(parkingLevels[level].rowsInLevel.get(row).get(spot) instanceof GeneralParkingSpot && ((GeneralParkingSpot) parkingLevels[level].rowsInLevel.get(row).get(spot)).isHandicapped() == false && parkingLevels[level].rowsInLevel.get(row).get(spot).isOccupied()==false){
+					rowStatus = Boolean.TRUE;
+				}
+			}
+			parkingLevels[level].getRowAvailability().get(row).set(1,rowStatus);
+			break;
+			
+		case BIKE:
+			for(int spot = 0; spot < parkingLevels[level].rowsInLevel.get(row).size();spot++){
+				if(parkingLevels[level].rowsInLevel.get(row).get(spot) instanceof BikeParkingSpot && parkingLevels[level].rowsInLevel.get(row).get(spot).isOccupied()==false){
+					rowStatus = Boolean.TRUE;
+				}
+			}
+			parkingLevels[level].getRowAvailability().get(row).set(1,rowStatus);
+			break;
+			
+		default:
+			break;
+		}
+		checkLevel(parkingType, level);
+	}
+	public void checkLevel(ParkingType parkingType, int level){
+		Boolean levelStatus = Boolean.FALSE;
+		int parkingTypeIdentifier = 0;
+		switch(parkingType){
+		case HANDICAPPED:
+			parkingTypeIdentifier = 0;
+			break;
+		case NON_HANDICAPPED:
+			parkingTypeIdentifier = 1;
+			break;
+		case BIKE:
+			parkingTypeIdentifier = 2;
+			break;
+		default:
+			break;
+		}
+		for(int row = 0; row < parkingLevels[level].getRowAvailability().size(); row++){
+			if(parkingLevels[level].getRowAvailability().get(row).get(0)){
+				levelStatus = Boolean.TRUE;
+			}
+		}
+		parkingLevels[level].getLevelAvailability().set(parkingTypeIdentifier, levelStatus);
+	}
+	public void findFirstEmptySpot(ParkingType parkingType){
+		for(int level=0;level<parkingLevels.length;level++){
+			if(parkingType == ParkingType.HANDICAPPED || parkingType == ParkingType.NON_HANDICAPPED || parkingType==ParkingType.BIKE){
+				// SKIP THE HEAVY VEHICLE BAYS
+				if(!(parkingLevels[level] instanceof HeavyVehicleBay)){
+					switch(parkingType){
+					case HANDICAPPED:
+						if(parkingLevels[level].getLevelAvailability().get(0)){
+							for(int row = 0; row < parkingLevels[level].getRowAvailability().size(); row++){
+								if(parkingLevels[level].getRowAvailability().get(row).get(0)){
+									for(int spot = 0; spot < parkingLevels[level].rowsInLevel.get(row).size();spot++){
+										if(parkingLevels[level].rowsInLevel.get(row).get(spot).isOccupied()==false){
+											parkingLevels[level].rowsInLevel.get(row).get(spot).park();
+											
+										}
+									}
+								}	
+							}
+						}
+					default:
+						break;
+					}
+				}
+			}		
+		}
+	}
+	public void parkVehicle(Vehicle vehicle){
+		if(vehicle.getVehicleType() == VehicleType.CAR || vehicle.getVehicleType() == VehicleType.BIKE){
+			parkInParkingBay(vehicle);
+		}
+		else{
+			parkInHeavyVehicleBay(vehicle);
+		}
+	}
+
+	private void parkInHeavyVehicleBay(Vehicle vehicle) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void parkInParkingBay(Vehicle vehicle) {
+		// TODO Auto-generated method stub
+		if(vehicle instanceof Car){
+			if(((Car) vehicle).getIsHandicapped()==true){
+				
+			}
+		}
+	}
 	
 }
 

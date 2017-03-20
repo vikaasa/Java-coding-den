@@ -1,10 +1,13 @@
 package parkinglot;
 
+import parkinglot.InitSettings.VehicleType;
+
 public class Car extends Vehicle {
 	private boolean isHandicapped;
-	private static int size = InitSettings.VehicleSizes.get(InitSettings.VehicleType.CAR);
+	private static VehicleType vehicleType = VehicleType.CAR;
+	private static int size = InitSettings.VehicleSizes.get(VehicleType.CAR);
 	public Car(String licensePlate, boolean isHandicapped) {
-		super(licensePlate, size);
+		super(licensePlate, size, vehicleType);
 		// TODO Auto-generated constructor stub
 		this.setHandicapped(isHandicapped);
 	}
