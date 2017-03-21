@@ -176,15 +176,21 @@ public class ParkingLot {
 		else{
 			unparkFromParkingBay(licensePlate, parkedLevel, parkedLocationInLevel);
 		}
-		
+		//check Parking Spot Type
+		int parkingSlotsPerRow = InitSettings.TOTAL_PARKING_SPOTS_FOR_LEVEL/InitSettings.ROWS_FOR_LEVEL;
+		int parkedRow = (int) (parkedLocationInLevel/parkingSlotsPerRow);
+		int parkedPositionInRow = parkedLocationInLevel%parkingSlotsPerRow;
+
 	}
 
 
 	private void unparkFromParkingBay(String licensePlate, int parkedLevel, int parkedLocationInLevel) {
 		// TODO Auto-generated method stub
+		int lastIteratedVehicleSize;
 		int lastIterated = 0;
 		int parkedLocationIterator=parkedLocationInLevel;
 		for(int i = 0; i<InitSettings.PARKING_SPOT_TYPES_FOR_PARKING_BAY.length; i++){
+			lastIteratedVehicleSize = InitSettings.PARKING_SPOT_SIZES_FOR_PARKING_BAY[i];
 			if(parkedLocationIterator-(InitSettings.PARKING_SPOT_TYPES_FOR_PARKING_BAY[i]*InitSettings.PARKING_SPOT_SIZES_FOR_PARKING_BAY[i])>0){
 				lastIterated = i;
 				parkedLocationIterator -= InitSettings.PARKING_SPOT_TYPES_FOR_PARKING_BAY[i];
@@ -194,14 +200,14 @@ public class ParkingLot {
 		}
 		int parkingSlotsPerRow = InitSettings.TOTAL_PARKING_SPOTS_FOR_LEVEL/InitSettings.ROWS_FOR_LEVEL;
 		int parkedRow = (int) (parkedLocationInLevel/parkingSlotsPerRow);
+		//int parkedPositionInRow = ;
 		int currentlyIteratedTill = parkedRow*parkingSlotsPerRow;
 		int parkedPositionInRow = (parkedLocationInLevel-parkedLocationIterator-currentlyIteratedTill)/InitSettings.PARKING_SPOT_SIZES_FOR_PARKING_BAY[lastIterated];
 		for(int i = parkedLocationInLevel-parkedLocationIterator; i<parkedLocationInLevel%parkingSlotsPerRow; i+=InitSettings.PARKING_SPOT_SIZES_FOR_PARKING_BAY[lastIterated+1]){
 			parkedPositionInRow += 1;
 		}
 		parkingLevels[parkedLevel].rowsInLevel.get(parkedRow).get(parkedPositionInRow).unPark();
-		getLicensePlateMap().remove(licensePlate);
-		checkRow(InitSettings.parkingType.get(lastIterated+1), parkedLevel, parkedRow);
+
 	}
 
 	private void unparkFromHeavyVehicleBay(String licensePlate, int parkedLevel, int parkedLocationInLevel) {

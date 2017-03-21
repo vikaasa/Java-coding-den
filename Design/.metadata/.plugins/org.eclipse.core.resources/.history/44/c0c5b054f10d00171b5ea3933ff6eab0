@@ -30,14 +30,6 @@ public class InitSettings {
         parkingTypeRatiosMap.put(ParkingType.BIKE, 0.3);
         return Collections.unmodifiableMap(parkingTypeRatiosMap);
     }
-    public static final Map<Integer, ParkingType> parkingType = initParkingTypeMap();
-    private final static Map<Integer, ParkingType> initParkingTypeMap() {
-        Map<Integer, ParkingType> parkingTypeMap = new HashMap<Integer, ParkingType>();
-        parkingTypeMap.put(0, ParkingType.HANDICAPPED);
-        parkingTypeMap.put(1, ParkingType.NON_HANDICAPPED);
-        parkingTypeMap.put(2, ParkingType.BIKE);
-        return Collections.unmodifiableMap(parkingTypeMap);
-    }
     public static final int NUMBER_OF_HANDICAPPED_PARKING = (int) ((InitSettings.TOTAL_PARKING_SPOTS_FOR_LEVEL*InitSettings.parkingTypeRatios.get(InitSettings.ParkingType.HANDICAPPED))/InitSettings.VehicleSizes.get(VehicleType.CAR));
 	public static final int NUMBER_OF_GENERAL_PARKING = (int) ((InitSettings.TOTAL_PARKING_SPOTS_FOR_LEVEL*InitSettings.parkingTypeRatios.get(InitSettings.ParkingType.NON_HANDICAPPED))/InitSettings.VehicleSizes.get(VehicleType.CAR));
 	public static final int NUMBER_OF_BIKE_PARKING = (int) ((InitSettings.TOTAL_PARKING_SPOTS_FOR_LEVEL*InitSettings.parkingTypeRatios.get(InitSettings.ParkingType.BIKE))/InitSettings.VehicleSizes.get(VehicleType.BIKE));

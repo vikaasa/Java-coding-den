@@ -201,7 +201,7 @@ public class ParkingLot {
 		}
 		parkingLevels[parkedLevel].rowsInLevel.get(parkedRow).get(parkedPositionInRow).unPark();
 		getLicensePlateMap().remove(licensePlate);
-		checkRow(InitSettings.parkingType.get(lastIterated+1), parkedLevel, parkedRow);
+
 	}
 
 	private void unparkFromHeavyVehicleBay(String licensePlate, int parkedLevel, int parkedLocationInLevel) {

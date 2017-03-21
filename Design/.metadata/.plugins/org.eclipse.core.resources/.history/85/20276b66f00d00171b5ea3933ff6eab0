@@ -182,9 +182,11 @@ public class ParkingLot {
 
 	private void unparkFromParkingBay(String licensePlate, int parkedLevel, int parkedLocationInLevel) {
 		// TODO Auto-generated method stub
+		int lastIteratedVehicleSize;
 		int lastIterated = 0;
 		int parkedLocationIterator=parkedLocationInLevel;
 		for(int i = 0; i<InitSettings.PARKING_SPOT_TYPES_FOR_PARKING_BAY.length; i++){
+			lastIteratedVehicleSize = InitSettings.PARKING_SPOT_SIZES_FOR_PARKING_BAY[i];
 			if(parkedLocationIterator-(InitSettings.PARKING_SPOT_TYPES_FOR_PARKING_BAY[i]*InitSettings.PARKING_SPOT_SIZES_FOR_PARKING_BAY[i])>0){
 				lastIterated = i;
 				parkedLocationIterator -= InitSettings.PARKING_SPOT_TYPES_FOR_PARKING_BAY[i];
@@ -200,8 +202,7 @@ public class ParkingLot {
 			parkedPositionInRow += 1;
 		}
 		parkingLevels[parkedLevel].rowsInLevel.get(parkedRow).get(parkedPositionInRow).unPark();
-		getLicensePlateMap().remove(licensePlate);
-		checkRow(InitSettings.parkingType.get(lastIterated+1), parkedLevel, parkedRow);
+		
 	}
 
 	private void unparkFromHeavyVehicleBay(String licensePlate, int parkedLevel, int parkedLocationInLevel) {
