@@ -34,5 +34,4 @@ public class InitSettings {
 	public static final int NUMBER_OF_GENERAL_PARKING = (int) ((InitSettings.TOTAL_PARKING_SPOTS_FOR_LEVEL*InitSettings.parkingTypeRatios.get(InitSettings.ParkingType.NON_HANDICAPPED))/InitSettings.VehicleSizes.get(VehicleType.CAR));
 	public static final int NUMBER_OF_BIKE_PARKING = (int) ((InitSettings.TOTAL_PARKING_SPOTS_FOR_LEVEL*InitSettings.parkingTypeRatios.get(InitSettings.ParkingType.BIKE))/InitSettings.VehicleSizes.get(VehicleType.BIKE));
 	public static final int[] PARKING_SPOT_TYPES_FOR_PARKING_BAY = {NUMBER_OF_HANDICAPPED_PARKING, NUMBER_OF_GENERAL_PARKING, NUMBER_OF_BIKE_PARKING};
-	public static final int[] PARKING_SPOT_SIZES_FOR_PARKING_BAY = {VehicleSizes.get(VehicleType.CAR),VehicleSizes.get(VehicleType.CAR),VehicleSizes.get(VehicleType.BIKE)};
 }

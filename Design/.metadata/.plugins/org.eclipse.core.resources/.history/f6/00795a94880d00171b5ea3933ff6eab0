@@ -13,7 +13,7 @@ abstract public class ParkingLevel {
 	private int overallParkingSpotCounter;
 	public ParkingLevel(int levelNumber, int overallParkingSpotCounter){
 		this.setTotalParkingSpotsForLevel(InitSettings.TOTAL_PARKING_SPOTS_FOR_LEVEL);
-		this.setLevelNumber(levelNumber);
+		this.setLevelName(levelNumber);
 		this.setRows(InitSettings.ROWS_FOR_LEVEL);
 		this.rowsInLevel = new ArrayList<List<ParkingSpot>>(rows);
 		this.levelAvailability = new ArrayList<Boolean>();

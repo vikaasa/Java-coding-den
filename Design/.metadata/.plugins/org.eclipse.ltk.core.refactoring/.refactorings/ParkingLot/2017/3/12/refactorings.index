@@ -1,1 +1,4 @@
 1489971562925	Rename method 'isLevelAvailability'
+1489981124275	Extract method 'findFirstEmptySpotInsideLevel'
+1490021818149	Encapsulate field 'licensePlateMap'
+1490031371398	Encapsulate field 'parkingSlotMap'

@@ -167,40 +167,6 @@ public class ParkingLot {
 
 	public void unparkVehicle(String licensePlate){
 		long parkedSlotNumber = getLicensePlateMap().get(licensePlate);
-		int parkedLevel = (int) (parkedSlotNumber/InitSettings.TOTAL_PARKING_SPOTS_FOR_LEVEL);
-		int parkedLocationInLevel = (int) (parkedSlotNumber%InitSettings.TOTAL_PARKING_SPOTS_FOR_LEVEL);
-		//check Level Type
-		if(parkingLevels[parkedLevel] instanceof HeavyVehicleBay){
-			unparkFromHeavyVehicleBay(licensePlate, parkedLevel, parkedLocationInLevel);
-		}
-		else{
-			unparkFromParkingBay(licensePlate, parkedLevel, parkedLocationInLevel);
-		}
-		//check Parking Spot Type
-		int parkingSlotsPerRow = InitSettings.TOTAL_PARKING_SPOTS_FOR_LEVEL/InitSettings.ROWS_FOR_LEVEL;
-		int parkedRow = (int) (parkedLocationInLevel/parkingSlotsPerRow);
-		int parkedPositionInRow = parkedLocationInLevel%parkingSlotsPerRow;
-		parkingLevels[parkedLevel].rowsInLevel.get(parkedRow).get(parkedPositionInRow).unPark();
-
-	}
-
-
-	private void unparkFromParkingBay(String licensePlate, int parkedLevel, int parkedLocationInLevel) {
-		// TODO Auto-generated method stub
-		int lastIteratedVehicleSize;
-		for(int i = 0; i<InitSettings.PARKING_SPOT_TYPES_FOR_PARKING_BAY.length; i++){
-			lastIteratedVehicleSize = InitSettings.PARKING_SPOT_SIZES_FOR_PARKING_BAY[i];
-			if(parkedLocationInLevel-InitSettings.PARKING_SPOT_TYPES_FOR_PARKING_BAY[i]>0){
-				parkedLocationInLevel -= InitSettings.PARKING_SPOT_TYPES_FOR_PARKING_BAY[i];
-			}
-			else
-				break;
-		}
-		
-	}
-
-	private void unparkFromHeavyVehicleBay(String licensePlate, int parkedLevel, int parkedLocationInLevel) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -210,6 +176,14 @@ public class ParkingLot {
 
 	public void setLicensePlateMap(HashMap<String, Long> licensePlateMap) {
 		this.licensePlateMap = licensePlateMap;
+	}
+
+	public static HashMap<Integer, int[]> getParkingSlotMap() {
+		return parkingSlotMap;
+	}
+
+	public static void setParkingSlotMap(HashMap<Integer, int[]> parkingSlotMap) {
+		ParkingLot.parkingSlotMap = parkingSlotMap;
 	}
 	
 }

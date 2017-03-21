@@ -81,8 +81,8 @@ public class ParkingBay extends ParkingLevel {
 	}
 	public void createParkingSpots(){
 		createGeneralParkingSpotsHelper(getLevelNumber(), currentRow, positionInRow, InitSettings.NUMBER_OF_HANDICAPPED_PARKING, ParkingType.HANDICAPPED);
-		createGeneralParkingSpotsHelper(getLevelNumber(), currentRow, positionInRow, InitSettings.NUMBER_OF_GENERAL_PARKING, ParkingType.NON_HANDICAPPED);
-		createGeneralParkingSpotsHelper(getLevelNumber(), currentRow, positionInRow, InitSettings.NUMBER_OF_BIKE_PARKING, ParkingType.BIKE);
+		createGeneralParkingSpotsHelper(getLevelNumber(), currentRow, positionInRow, numberOfGeneralParking, ParkingType.NON_HANDICAPPED);
+		createGeneralParkingSpotsHelper(getLevelNumber(), currentRow, positionInRow, numberOfBikeParking, ParkingType.BIKE);
 	}
 
 }
